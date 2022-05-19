@@ -1,0 +1,59 @@
+Shopify Data Science Internship Challenge:
+
+Question 2: For this question you’ll need to use SQL. Follow this link to access the data set required for the challenge. Please use queries to answer the following questions. Paste your queries along with your final numerical answers below.
+
+LINK: https://www.w3schools.com/SQL/TRYSQL.ASP?FILENAME=TRYSQL_SELECT_ALL
+
+a. How many orders were shipped by Speedy Express in total?
+
+SELECT COUNT(OrderID)
+FROM (SELECT * FROM Orders
+LEFT JOIN Shippers
+ON Shippers.ShipperID = Orders.ShipperID)
+
+WHERE Shippers.ShipperName IN ('Speedy Express');
+
+Answer =  54
+
+b. What is the last name of the employee with the most orders?
+
+SELECT TOP 1 Employees.LastName, COUNT(Orders.OrderID)
+FROM Orders
+LEFT JOIN Employees
+ON Employees.EmployeeID = Orders.EmployeeID
+GROUP BY Employees.LastName
+ORDER BY COUNT(Orders.OrderID) DESC;
+
+Answer = Peacock
+
+c. What product was ordered the most by customers in Germany
+
+SELECT TOP 1 Products.ProductName, SUM(OrderDetails.Quantity)
+FROM (((Customers
+INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID)
+INNER JOIN OrderDetails ON Orders.OrderID = OrderDetails.OrderID)
+INNER JOIN Products ON OrderDetails.ProductID = Products.ProductID)
+WHERE Customers.Country='Germany'
+GROUP BY Products.ProductName
+ORDER BY SUM(OrderDetails.Quantity) DESC;
+
+Boston Crab Meat —> 160
+
+
+SAURABH'S ANSWERS
+
+a.
+
+Select Count(OrderID) from (SELECT * FROM Orders od
+left join Shippers sh 
+on sh.ShipperID = od.ShipperID)
+
+where ShipperName in ('Speedy Express');
+
+
+SELECT TOP 1 Employees.LastName, COUNT(Orders.OrderID)
+FROM Orders
+LEFT JOIN Employees
+ON Employees.EmployeeID = Orders.EmployeeID
+GROUP BY Employees.LastName
+ORDER BY COUNT(Orders.OrderID) DESC;
