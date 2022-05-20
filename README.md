@@ -67,7 +67,7 @@ WHERE Customers.Country='Germany'
 GROUP BY Products.ProductName
 ORDER BY SUM(OrderDetails.Quantity) DESC;
 
-Boston Crab Meat —> 160
+Answer = Boston Crab Meat —> 160
 
 #### Link to Txt File: https://github.com/Mullen44/Shopy_DSInternChallenge/blob/main/DS_Challenge_Q2.txt
 
