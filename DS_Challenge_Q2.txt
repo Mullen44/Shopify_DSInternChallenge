@@ -37,23 +37,4 @@ WHERE Customers.Country='Germany'
 GROUP BY Products.ProductName
 ORDER BY SUM(OrderDetails.Quantity) DESC;
 
-Boston Crab Meat —> 160
-
-
-SAURABH'S ANSWERS
-
-a.
-
-Select Count(OrderID) from (SELECT * FROM Orders od
-left join Shippers sh 
-on sh.ShipperID = od.ShipperID)
-
-where ShipperName in ('Speedy Express');
-
-
-SELECT TOP 1 Employees.LastName, COUNT(Orders.OrderID)
-FROM Orders
-LEFT JOIN Employees
-ON Employees.EmployeeID = Orders.EmployeeID
-GROUP BY Employees.LastName
-ORDER BY COUNT(Orders.OrderID) DESC;
+Answer = Boston Crab Meat —> 160
